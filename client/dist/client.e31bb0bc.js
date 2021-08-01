@@ -32399,10 +32399,12 @@ function printBlock(block) {
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
   var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
   cell1.innerHTML = block.number;
   cell2.innerHTML = block.hash;
-  cell3.innerHTML = block.timestamp.toString(10);
+  cell3.innerHTML = new Date(block.timestamp * 1000);
   cell4.innerHTML = block.miner;
+  cell5.innerHTML = block.gasUsed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 module.exports = blockNumber;
@@ -32434,7 +32436,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58539" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64105" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

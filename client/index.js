@@ -26,10 +26,12 @@ function printBlock(block){
   const cell2 = row.insertCell(1);
   const cell3 = row.insertCell(2);
   const cell4 = row.insertCell(3);
+  const cell5 = row.insertCell(4);
   cell1.innerHTML = block.number;
   cell2.innerHTML = block.hash;
-  cell3.innerHTML = block.timestamp.toString(10);
+  cell3.innerHTML = new Date(block.timestamp * 1000);
   cell4.innerHTML = block.miner;
+  cell5.innerHTML = block.gasUsed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 module.exports = blockNumber;
